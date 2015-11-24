@@ -1,5 +1,6 @@
 package com.boeve.chorescore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 public class StreamActivity extends AppCompatActivity {
 
@@ -29,6 +31,11 @@ public class StreamActivity extends AppCompatActivity {
       }
     });
 
+    ParseUser currentUser = ParseUser.getCurrentUser();
+    if (currentUser == null) {
+      Intent i = new Intent(this, LoginActivity.class);
+      startActivity(i);
+    }
   }
 
   @Override
